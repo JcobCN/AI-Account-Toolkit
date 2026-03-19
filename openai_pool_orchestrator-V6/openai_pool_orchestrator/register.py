@@ -25,6 +25,7 @@ import urllib.request
 import urllib.error
 
 from curl_cffi import requests
+from curl_cffi.curl import CurlHttpVersion
 
 # ==========================================
 # 日志事件发射器
@@ -110,7 +111,7 @@ DEFAULT_PROXY_POOL_AUTH_MODE = "query"
 DEFAULT_PROXY_POOL_API_KEY = "19c0ec43-8f76-4c97-81bc-bcda059eeba4"
 DEFAULT_PROXY_POOL_COUNT = 1
 DEFAULT_PROXY_POOL_COUNTRY = "US"
-DEFAULT_HTTP_VERSION = "v2"
+DEFAULT_HTTP_VERSION = CurlHttpVersion.V2_0
 H3_PROXY_ERROR_HINT = "HTTP/3 is not supported over an HTTP proxy"
 TRANSIENT_TLS_ERROR_HINTS = (
     "curl: (35)",
@@ -140,16 +141,16 @@ def _call_with_http_fallback(request_func, url: str, **kwargs: Any):
         message = str(exc)
         if H3_PROXY_ERROR_HINT in message:
             retry_kwargs = dict(kwargs)
-            retry_kwargs["http_version"] = "v1"
+            retry_kwargs["http_version"] = CurlHttpVersion.V1_1
             return request_func(url, **retry_kwargs)
         if not _is_transient_tls_error(message):
             raise
 
         last_exc: Exception = exc
         candidate_kwargs_list = [dict(kwargs)]
-        if str(kwargs.get("http_version") or "").strip().lower() != "v1":
+        if str(kwargs.get("http_version") or "").strip().lower() != "v1" and kwargs.get("http_version") != CurlHttpVersion.V1_1:
             retry_kwargs = dict(kwargs)
-            retry_kwargs["http_version"] = "v1"
+            retry_kwargs["http_version"] = CurlHttpVersion.V1_1
             candidate_kwargs_list.append(retry_kwargs)
 
         for candidate_kwargs in candidate_kwargs_list:
@@ -160,9 +161,9 @@ def _call_with_http_fallback(request_func, url: str, **kwargs: Any):
                 except Exception as retry_exc:
                     last_exc = retry_exc
                     retry_message = str(retry_exc)
-                    if H3_PROXY_ERROR_HINT in retry_message and str(candidate_kwargs.get("http_version") or "").strip().lower() != "v1":
+                    if H3_PROXY_ERROR_HINT in retry_message and candidate_kwargs.get("http_version") != CurlHttpVersion.V1_1:
                         candidate_kwargs = dict(candidate_kwargs)
-                        candidate_kwargs["http_version"] = "v1"
+                        candidate_kwargs["http_version"] = CurlHttpVersion.V1_1
                         continue
                     if not _is_transient_tls_error(retry_message):
                         raise

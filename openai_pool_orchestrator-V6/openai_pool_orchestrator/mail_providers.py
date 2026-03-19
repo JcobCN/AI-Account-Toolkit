@@ -709,6 +709,102 @@ class CloudflareTempEmailProvider(MailProvider):
         return ""
 
 
+# ==================== FreeMail ====================
+
+class FreeMailProvider(MailProvider):
+    def __init__(self, api_base: str, api_key: str):
+        self.api_base = api_base.rstrip("/")
+        self.api_key = api_key
+
+    def _headers(self) -> Dict[str, str]:
+        return {"Authorization": f"Bearer {self.api_key}"}
+
+    def _get_domains(self, session: _requests.Session) -> List[str]:
+        try:
+            resp = session.get(f"{self.api_base}/api/domains", headers=self._headers(), timeout=15, verify=False)
+            if resp.status_code == 200:
+                return resp.json()
+        except Exception:
+            pass
+        return []
+
+    def create_mailbox(
+        self,
+        proxy: str = "",
+        proxy_selector: Optional[Callable[[], str]] = None,
+    ) -> Tuple[str, str]:
+        with _build_session(proxy, proxy_selector) as session:
+            domains = self._get_domains(session)
+            if not domains:
+                return "", ""
+            
+            # 使用 /api/generate 随机生成
+            try:
+                resp = session.get(f"{self.api_base}/api/generate", headers=self._headers(), timeout=15, verify=False)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    email = data.get("email")
+                    if email:
+                        return email, self.api_key
+            except Exception as exc:
+                logger.warning("FreeMail 创建邮箱失败: %s", exc)
+        return "", ""
+
+    def wait_for_otp(
+        self,
+        auth_credential: str,
+        email: str,
+        proxy: str = "",
+        proxy_selector: Optional[Callable[[], str]] = None,
+        timeout: int = 120,
+        stop_event: Optional[threading.Event] = None,
+    ) -> str:
+        with _build_session(proxy, proxy_selector) as session:
+            start = time.time()
+            seen_ids: set = set()
+
+            while time.time() - start < timeout:
+                if stop_event and stop_event.is_set():
+                    return ""
+                try:
+                    # 获取邮件列表
+                    resp = session.get(
+                        f"{self.api_base}/api/emails",
+                        params={"mailbox": email, "limit": 20},
+                        headers=self._headers(),
+                        timeout=15, verify=False,
+                    )
+                    if resp.status_code == 200:
+                        messages = resp.json()
+                        for msg in messages:
+                            msg_id = msg.get("id")
+                            if not msg_id or msg_id in seen_ids:
+                                continue
+                            seen_ids.add(msg_id)
+
+                            # 获取邮件详情以获取完整内容
+                            detail_resp = session.get(
+                                f"{self.api_base}/api/email/{msg_id}",
+                                headers=self._headers(),
+                                timeout=15, verify=False,
+                            )
+                            if detail_resp.status_code == 200:
+                                detail = detail_resp.json()
+                                sender = str(detail.get("sender") or "").lower()
+                                subject = str(detail.get("subject") or "")
+                                content = detail.get("content") or detail.get("html_content") or ""
+                                
+                                combined = f"{subject}\n{content}"
+                                if "openai" in sender or "openai" in combined.lower():
+                                    code = _extract_code(combined)
+                                    if code:
+                                        return code
+                except Exception as exc:
+                    logger.warning("FreeMail 轮询验证码失败: %s", exc)
+                time.sleep(3)
+        return ""
+
+
 # ==================== 多提供商路由 ====================
 
 
@@ -799,6 +895,11 @@ def create_provider_by_name(provider_type: str, mail_cfg: Dict[str, Any]) -> Mai
             api_base=api_base,
             admin_password=str(mail_cfg.get("admin_password", "")).strip(),
             domain=str(mail_cfg.get("domain", "")).strip(),
+        )
+    elif provider_type == "freemail":
+        return FreeMailProvider(
+            api_base=api_base,
+            api_key=str(mail_cfg.get("api_key", "")).strip(),
         )
     elif provider_type == "mailtm":
         return MailTmProvider(api_base=api_base or "https://api.mail.tm")

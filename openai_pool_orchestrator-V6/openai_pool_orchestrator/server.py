@@ -2211,6 +2211,7 @@ async def api_check_proxy(req: ProxyCheckRequest) -> Dict[str, Any]:
         proxy = req.proxy.strip()
         try:
             from curl_cffi import requests as cffi_req
+            from curl_cffi.curl import CurlHttpVersion
             import re
 
             proxies = {"http": proxy, "https": proxy} if proxy else None
@@ -2218,7 +2219,7 @@ async def api_check_proxy(req: ProxyCheckRequest) -> Dict[str, Any]:
                 resp = cffi_req.get(
                     "https://cloudflare.com/cdn-cgi/trace",
                     proxies=proxies,
-                    http_version="v2",
+                    http_version=CurlHttpVersion.V2_0,
                     impersonate="chrome",
                     timeout=8,
                 )
@@ -2228,7 +2229,7 @@ async def api_check_proxy(req: ProxyCheckRequest) -> Dict[str, Any]:
                 resp = cffi_req.get(
                     "https://cloudflare.com/cdn-cgi/trace",
                     proxies=proxies,
-                    http_version="v1",
+                    http_version=CurlHttpVersion.V1_1,
                     impersonate="chrome",
                     timeout=8,
                 )
@@ -2275,17 +2276,18 @@ async def api_proxy_pool_test(req: ProxyPoolTestRequest) -> Dict[str, Any]:
 
         try:
             from curl_cffi import requests as cffi_req
+            from curl_cffi.curl import CurlHttpVersion
             import re
 
             relay_url = _pool_relay_url_from_fetch_url(api_url)
             if relay_url:
                 relay_params = {"api_key": api_key, "url": "https://cloudflare.com/cdn-cgi/trace", "country": country}
                 try:
-                    relay_resp = cffi_req.get(relay_url, params=relay_params, http_version="v2", impersonate="chrome", timeout=8)
+                    relay_resp = cffi_req.get(relay_url, params=relay_params, http_version=CurlHttpVersion.V2_0, impersonate="chrome", timeout=8)
                 except Exception as exc:
                     if "HTTP/3 is not supported over an HTTP proxy" not in str(exc):
                         raise
-                    relay_resp = cffi_req.get(relay_url, params=relay_params, http_version="v1", impersonate="chrome", timeout=8)
+                    relay_resp = cffi_req.get(relay_url, params=relay_params, http_version=CurlHttpVersion.V1_1, impersonate="chrome", timeout=8)
                 if relay_resp.status_code == 200:
                     relay_text = relay_resp.text
                     relay_loc_m = re.search(r"^loc=(.+)$", relay_text, re.MULTILINE)
@@ -2310,11 +2312,11 @@ async def api_proxy_pool_test(req: ProxyPoolTestRequest) -> Dict[str, Any]:
             supported = None
             try:
                 try:
-                    resp = cffi_req.get("https://cloudflare.com/cdn-cgi/trace", proxies=proxies, http_version="v2", impersonate="chrome", timeout=8)
+                    resp = cffi_req.get("https://cloudflare.com/cdn-cgi/trace", proxies=proxies, http_version=CurlHttpVersion.V2_0, impersonate="chrome", timeout=8)
                 except Exception as exc:
                     if "HTTP/3 is not supported over an HTTP proxy" not in str(exc):
                         raise
-                    resp = cffi_req.get("https://cloudflare.com/cdn-cgi/trace", proxies=proxies, http_version="v1", impersonate="chrome", timeout=8)
+                    resp = cffi_req.get("https://cloudflare.com/cdn-cgi/trace", proxies=proxies, http_version=CurlHttpVersion.V1_1, impersonate="chrome", timeout=8)
                 text = resp.text
                 loc_m = re.search(r"^loc=(.+)$", text, re.MULTILINE)
                 loc = loc_m.group(1) if loc_m else "?"
