@@ -21,6 +21,7 @@ AI-Account-Toolkit/
 ├── openai_pool_orchestrator-V6/ # OpenAI 账号池编排器（新版本）
 ├── ClashVerge_              # ClashVerge 非港轮询脚本
 ├── openai_register/         # OpenAI 注册脚本
+├── Register_GPT_v0/         # GPT 注册工具
 └── packages/                # 分类子模块目录
     ├── openai/              # OpenAI 相关子模块
     │   ├── ABCard/          # ChatGPT Business/Plus 自动开通工具
@@ -29,14 +30,23 @@ AI-Account-Toolkit/
     ├── gemini/              # Gemini 相关子模块
     │   └── gemini-balance-do/ # Gemini 余额查询工具
     ├── codex/               # Codex 相关子模块
-    │   └── codex-lb/        # Codex 负载均衡工具
+    │   ├── codex-lb/        # Codex 负载均衡工具
+    │   ├── codex_register/  # Codex 注册脚本
+    │   └── codex-register-fix/ # Codex 注册修复版本
     ├── claude/              # Claude 相关子模块
     │   └── claude-key-switch/ # Claude 密钥切换工具
     ├── email/               # 邮箱相关子模块
-    │   └── cloudflare_temp_email/ # Cloudflare 临时邮箱服务
+    │   ├── cloudflare_temp_email/ # Cloudflare 临时邮箱服务
+    │   ├── msOauth2api/     # 微软 OAuth2 邮件取件 API
+    │   ├── Hotmail-Outlook-Create-Account-Register-Auto/ # Hotmail 账号自动创建工具
+    │   └── outlook-auto-register/ # Outlook 邮箱注册工具集
     └── general/             # 通用工具子模块
         ├── any-auto-register/ # 多平台账号自动注册工具
-        └── Ultimate-openai-gemini-claude-api-key-scraper/ # 多平台 API 密钥抓取工具
+        ├── Ultimate-openai-gemini-claude-api-key-scraper/ # 多平台 API 密钥抓取工具
+        ├── grok-register/   # x.ai 注册批处理工具
+        ├── MREGISTER/        # ChatGPT 注册机 Web UI
+        ├── cursor-auto-register/ # 光标设置管理工具
+        └── ExaFree/          # Exa 免费使用工具
 ```
 
 ## 项目导航

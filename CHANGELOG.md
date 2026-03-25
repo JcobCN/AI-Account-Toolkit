@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2026-03-19
+## [2.0.0] - 2026-03-25
 
 ### Added
 
@@ -24,22 +24,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Token 导出功能
   - Sub2Api 平台上传支持
 
-- **packages/email/cloudflare_temp_email** (submodule) - Cloudflare 临时邮箱服务
-  - 基于 Cloudflare 免费服务构建
-  - Rust WASM 邮件解析，高性能
-  - AI 邮件识别，自动提取验证码
-  - 支持 SMTP/IMAP 代理
-  - Telegram Bot 集成
-  - 用户管理，支持 OAuth2、Passkey 登录
+- **Register_GPT_v0** - GPT 注册工具
+  - 自动化 GPT 账号注册流程
+  - 支持邮箱验证
+  - 支持验证码处理
+  - 支持代理配置
 
-- **packages/openai/ABCard** (submodule) - ChatGPT Business/Plus 自动开通工具
-  - 全自动注册 ChatGPT 账号
-  - 开通 Business (5席位 $0) 或 Plus (个人版 $0)
-  - Xvfb + Chrome 自动支付，绕过 hCaptcha
-  - Web UI (Streamlit) 操作界面
-  - 兑换码管控系统
+### 子模块添加
 
 - **OpenAI 相关子模块**
+  - **packages/openai/ABCard** (submodule) - ChatGPT Business/Plus 自动开通工具
+    - 全自动注册 ChatGPT 账号
+    - 开通 Business (5席位 $0) 或 Plus (个人版 $0)
+    - Xvfb + Chrome 自动支付，绕过 hCaptcha
+    - Web UI (Streamlit) 操作界面
+    - 兑换码管控系统
   - **packages/openai/chatgpt-creator** (submodule) - ChatGPT 账号创建工具
   - **packages/openai/openai-oauth** (submodule) - OpenAI OAuth 认证工具
 
@@ -48,9 +47,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Codex 相关子模块**
   - **packages/codex/codex-lb** (submodule) - Codex 负载均衡工具
+  - **packages/codex/codex_register** (submodule) - Codex 注册脚本
+    - 基于 Python 的 HTTP 自动化脚本
+    - 通过 MailAPI 轮询邮箱验证码
+    - 注册完成后自动上传到 CPA
+    - 支持并发执行和代理管理
+  - **packages/codex/codex-register-fix** (submodule) - Codex 注册修复版本
+    - 基于 codex-manager 二次开发
+    - 修复 OpenAI 授权流程变更导致的注册失败问题
+    - 支持 Sentinel PoW Token 生成
+    - 提供完整的 OAuth 登录流程
 
 - **Claude 相关子模块**
   - **packages/claude/claude-key-switch** (submodule) - Claude 密钥切换工具
+
+- **邮箱相关子模块**
+  - **packages/email/cloudflare_temp_email** (submodule) - Cloudflare 临时邮箱服务
+    - 基于 Cloudflare 免费服务构建
+    - Rust WASM 邮件解析，高性能
+    - AI 邮件识别，自动提取验证码
+    - 支持 SMTP/IMAP 代理
+    - Telegram Bot 集成
+    - 用户管理，支持 OAuth2、Passkey 登录
+  - **packages/email/msOauth2api** (submodule) - 微软 OAuth2 邮件取件 API
+    - 将微软的 OAuth2 认证取件流程封装成简单的 API
+    - 部署在 Vercel 的无服务器平台上
+    - 支持 Graph API 取件，速度更快更稳定
+    - 自动提取邮件中的 6 位数字验证码
+  - **packages/email/Hotmail-Outlook-Create-Account-Register-Auto** (submodule) - Hotmail 账号自动创建工具
+    - 高级 Hotmail / Outlook 账号创建和自动化工具
+    - 支持验证码绕过、代理轮换、指纹伪装
+    - 逼真的人类行为模拟
+    - 多线程并发创建账号
+  - **packages/email/outlook-auto-register** (submodule) - Outlook 邮箱注册工具集
+    - 基于 Outlook 邮箱 OAuth2 认证的批量自动注册工具集
+    - 支持多个目标平台共享同一套邮箱接码模块
+    - 提供统一的启动入口和配置向导
+    - 支持多种代理方式和验证码提取
 
 - **通用工具子模块**
   - **packages/general/any-auto-register** (submodule) - 多平台账号自动注册工具
@@ -76,41 +109,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - 简单易用的界面
     - 适用于需要 Exa 服务的用户
 
-- **Codex 相关子模块**
-  - **packages/codex/codex-lb** (submodule) - Codex 负载均衡工具
-  - **packages/codex/codex_register** (submodule) - Codex 注册脚本
-    - 基于 Python 的 HTTP 自动化脚本
-    - 通过 MailAPI 轮询邮箱验证码
-    - 注册完成后自动上传到 CPA
-    - 支持并发执行和代理管理
-  - **packages/codex/codex-register-fix** (submodule) - Codex 注册修复版本
-    - 基于 codex-manager 二次开发
-    - 修复 OpenAI 授权流程变更导致的注册失败问题
-    - 支持 Sentinel PoW Token 生成
-    - 提供完整的 OAuth 登录流程
-
-- **邮箱相关子模块**
-  - **packages/email/cloudflare_temp_email** (submodule) - Cloudflare 临时邮箱服务
-  - **packages/email/msOauth2api** (submodule) - 微软 OAuth2 邮件取件 API
-    - 将微软的 OAuth2 认证取件流程封装成简单的 API
-    - 部署在 Vercel 的无服务器平台上
-    - 支持 Graph API 取件，速度更快更稳定
-    - 自动提取邮件中的 6 位数字验证码
-  - **packages/email/Hotmail-Outlook-Create-Account-Register-Auto** (submodule) - Hotmail 账号自动创建工具
-    - 高级 Hotmail / Outlook 账号创建和自动化工具
-    - 支持验证码绕过、代理轮换、指纹伪装
-    - 逼真的人类行为模拟
-    - 多线程并发创建账号
-  - **packages/email/outlook-auto-register** (submodule) - Outlook 邮箱注册工具集
-    - 基于 Outlook 邮箱 OAuth2 认证的批量自动注册工具集
-    - 支持多个目标平台共享同一套邮箱接码模块
-    - 提供统一的启动入口和配置向导
-    - 支持多种代理方式和验证码提取
-
 ### Updated
 
 - 项目结构优化，整合多个注册工具
 - 根目录 README 添加新子项目导航
+- 所有子模块添加中文 README 文件
+- 更新项目文档和说明
 
 ## [1.0.0] - 2025-02-18
 
