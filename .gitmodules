@@ -1,6 +1,3 @@
-[submodule "packages/openai/ABCard"]
-	path = packages/openai/ABCard
-	url = https://github.com/kaima2022/ABCard.git
 [submodule "packages/general/any-auto-register"]
 	path = packages/general/any-auto-register
 	url = https://github.com/lxf746/any-auto-register.git
@@ -23,36 +20,33 @@
 [submodule "packages/claude/claude-key-switch"]
 	path = packages/claude/claude-key-switch
 	url = https://github.com/sepmein/claude-key-switch.git
-[submodule "packages/general/Ultimate-openai-gemini-claude-api-key-scraper"]
-	path = packages/general/Ultimate-openai-gemini-claude-api-key-scraper
-	url = https://github.com/shjee-afridi/Ultimate-openai-gemini-claude-api-key-scraper.git
-[submodule "packages/general/grok-register"]
-	path = packages/general/grok-register
-	url = https://github.com/509992828/grok-register.git
-[submodule "packages/general/MREGISTER"]
-	path = packages/general/MREGISTER
-	url = https://github.com/Maishan-Inc/MREGISTER.git
-[submodule "packages/codex/codex_register"]
-	path = packages/codex/codex_register
-	url = https://github.com/kschen202115/codex_register.git
 [submodule "packages/codex/codex-register-fix"]
 	path = packages/codex/codex-register-fix
 	url = https://github.com/917017420/codex-register-fix.git
-[submodule "packages/email/msOauth2api"]
-	path = packages/email/msOauth2api
-	url = https://github.com/HChaoHui/msOauth2api.git
-[submodule "packages/email/Hotmail-Outlook-Create-Account-Register-Auto"]
-	path = packages/email/Hotmail-Outlook-Create-Account-Register-Auto
-	url = https://github.com/SeseydOw/Hotmail-Outlook-Create-Account-Register-Auto.git
 [submodule "packages/email/outlook-auto-register"]
 	path = packages/email/outlook-auto-register
 	url = https://github.com/Asunfly/outlook-auto-register.git
-[submodule "packages/general/cursor-auto-register"]
-	path = packages/general/cursor-auto-register
-	url = https://github.com/VictorKTO/cursor-auto-register.git
-[submodule "packages/general/ExaFree"]
-	path = packages/general/ExaFree
-	url = https://github.com/chengtx809/ExaFree.git
 [submodule "packages/email/tempmail"]
 	path = packages/email/tempmail
 	url = https://github.com/123nhh/tempmail.git
+[submodule "packages/openai/ab-card"]
+	path = packages/openai/ab-card
+	url = https://github.com/kaima2022/ABCard.git
+[submodule "packages/general/exa-free"]
+	path = packages/general/exa-free
+	url = https://github.com/chengtx809/ExaFree.git
+[submodule "packages/email/ms-oauth2-api"]
+	path = packages/email/ms-oauth2-api
+	url = https://github.com/HChaoHui/msOauth2api.git
+[submodule "packages/email/hotmail-outlook-auto-register"]
+	path = packages/email/hotmail-outlook-auto-register
+	url = https://github.com/SeseydOw/Hotmail-Outlook-Create-Account-Register-Auto.git
+[submodule "packages/general/api-key-scraper"]
+	path = packages/general/api-key-scraper
+	url = https://github.com/shjee-afridi/Ultimate-openai-gemini-claude-api-key-scraper.git
+[submodule "packages/cursor/cursor-auto-register"]
+	path = packages/cursor/cursor-auto-register
+	url = https://github.com/VictorKTO/cursor-auto-register.git
+[submodule "packages/grok/grok-register"]
+	path = packages/grok/grok-register
+	url = https://github.com/509992828/grok-register.git

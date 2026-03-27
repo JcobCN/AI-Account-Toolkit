@@ -23,8 +23,10 @@
 - `packages/claude/`：Claude 相关工具
 - `packages/gemini/`：Gemini 相关工具
 - `packages/codex/`：Codex 相关工具
+- `packages/cursor/`：Cursor 相关工具
+- `packages/grok/`：Grok/x.ai 相关工具
 - `packages/email/`：邮箱服务相关工具
-- `packages/general/`：通用工具
+- `packages/general/`：真正的通用工具（不属于以上任何平台的工具）
 
 ### 步骤：
 1. **Fork** 本仓库并 Clone 到本地。
