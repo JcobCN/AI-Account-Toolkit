@@ -1,0 +1,13 @@
+{
+  "heroSmsApiKey": "your_herosms_api_key",
+  "heroSmsService": "dr",
+  "heroSmsCountry": 16,
+  "mailBaseUrl": "https://your-mail-server.com",
+  "mailAdminPassword": "your_mail_admin_password",
+  "mailSitePassword": "your_mail_site_password",
+  "mailDomain": "your-domain.com",
+  "proxyHost": "your-proxy-host.com",
+  "proxyPort": 823,
+  "proxyUsername": "your_proxy_username",
+  "proxyPassword": "your_proxy_password"
+}
