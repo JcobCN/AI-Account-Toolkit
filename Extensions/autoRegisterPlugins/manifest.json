@@ -1,0 +1,96 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Register 2925",
+  "version": "0.3.0",
+  "description": "OpenAI account creation helper with 2925 and DDG mailbox polling",
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "webNavigation",
+    "debugger",
+    "browsingData",
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/sidepanel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://auth0.openai.com/*",
+        "https://auth.openai.com/*",
+        "https://accounts.openai.com/*"
+      ],
+      "js": [
+        "content/utils.js",
+        "content/signup-page.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.2925.com/*"
+      ],
+      "js": [
+        "content/utils.js",
+        "content/mail-2925.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://mail.qq.com/*",
+        "https://wx.mail.qq.com/*"
+      ],
+      "js": [
+        "content/utils.js",
+        "content/qq-mail.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://mail.163.com/*"
+      ],
+      "js": [
+        "content/utils.js",
+        "content/mail-163.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://duckduckgo.com/email/settings/autofill*"
+      ],
+      "js": [
+        "content/utils.js",
+        "content/duck-mail.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/mail-2925-bridge.js"
+      ],
+      "matches": [
+        "https://www.2925.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Open Auto Register"
+  }
+}

@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.0] - 2026-04-10
+
+### Added
+- codex-oauth-automation-extension 子仓库 - Codex OAuth 批量自动化 Chrome 扩展
+- codex-register-V2 目录 - Codex 远程注册机 V2 (Browserbase + DDG)
+- Extensions 目录 - 浏览器扩展插件集 (含 2925 自动化)
+- FreeSMS 目录 - 免费在线接码平台资料
+- mailhub 目录 - 邮箱分享资料
+- grok 目录 - Grok 相关研究资料
+- openai_register 目录 - OpenAI 自动化注册脚本
+
+### Changed
+- README 全面更新：添加新增项目到项目结构与导航，重新索引所有项目章节
+
 ## [2.2.0] - 2026-04-01
 
 ### Added

@@ -43,6 +43,12 @@ AI-Account-Toolkit/
 ├── GPT_register+duckmail+CPA+autouploadsub2api/ # DuckMail + OAuth + Sub2Api 注册工具
 ├── team_all-in-one/         # ChatGPT Team 一键注册工具
 ├── codex/                   # Codex 相关工具
+├── codex-oauth-automation-extension/ # Codex OAuth 批量自动化 Chrome 扩展
+├── codex-register-V2/       # Codex 远程注册机 V2 (Browserbase + DDG)
+├── Extensions/              # 浏览器扩展插件集 (含 2925 自动化)
+├── FreeSMS/                 # 免费在线接码平台资料
+├── mailhub/                 # 邮箱分享资料
+├── grok/                    # SuperGrok 相关资料
 ├── freemail/                # 临时邮箱服务
 ├── merge-mailtm-share/      # MailTM 邮箱合并工具
 ├── ob12api/                 # OB12 API 服务
@@ -165,11 +171,45 @@ AI-Account-Toolkit/
 
 **使用指南**：[ClashVerge_/README.md](ClashVerge_/README.md)
 
+#### 13. codex-oauth-automation-extension - Codex OAuth 批量自动化 Chrome 扩展
+
+**功能**：批量跑通 ChatGPT OAuth 注册/登录流程。支持单步/整套自动执行、DDG 邮箱别名生成、验证码自动获取等功能。
+
+**使用指南**：[codex-oauth-automation-extension/README.md](codex-oauth-automation-extension/README.md)
+
+#### 14. codex-register-V2 - Codex 远程注册机 V2
+
+**功能**：基于 Browserbase 远程浏览器和 DDG 邮箱别名的 Codex Token 自动注册工具，分两阶段完成注册和 OAuth 授权。
+
+**使用指南**：[codex-register-V2/eefdb42dd6dfcbb5acee9fa2efeb03d775a509df/README.md](codex-register-V2/eefdb42dd6dfcbb5acee9fa2efeb03d775a509df/README.md)
+
+#### 15. Extensions - 浏览器扩展插件集
+
+**功能**：包含用于自动注册的浏览器插件，如 `autoRegisterPlugins` 针对 2925 邮箱实现的无限别名自动化注册流程。
+
+**使用指南**：[Extensions/autoRegisterPlugins/README.md](Extensions/autoRegisterPlugins/README.md)
+
+#### 16. FreeSMS - 免费在线接码平台资料
+
+**功能**：收集整理全球多个主流免费接码平台资料，用于注册辅助。
+
+#### 17. mailhub - 邮箱分享资料
+
+**功能**：邮箱账号分享及相关资源汇集。
+
+#### 18. grok - Grok 相关资料
+
+**功能**：包含 SuperGrok 等 Grok 平台的相关研究资料。
+
+#### 19. openai_register - OpenAI 注册脚本
+
+**功能**：用于 OpenAI 账号注册的自动化 Python 脚本。
+
 ---
 
 ### OpenAI 相关 (packages/openai)
 
-#### 13. ab-card - ChatGPT Business/Plus 自动开通工具
+#### 20. ab-card - ChatGPT Business/Plus 自动开通工具
 
 **功能**：全自动注册 ChatGPT 账号 + 开通 Business 或 Plus 套餐（首月免费），支持 Web UI 操作。
 
@@ -177,13 +217,13 @@ AI-Account-Toolkit/
 
 **使用指南**：[packages/openai/ab-card/README.md](packages/openai/ab-card/README.md)
 
-#### 14. chatgpt-creator - ChatGPT 账号创建工具
+#### 21. chatgpt-creator - ChatGPT 账号创建工具
 
 **功能**：ChatGPT 账号自动创建工具，支持批量注册和自动化流程。
 
 **使用指南**：[packages/openai/chatgpt-creator/README.md](packages/openai/chatgpt-creator/README.md)
 
-#### 15. openai-oauth - OpenAI OAuth 认证工具
+#### 22. openai-oauth - OpenAI OAuth 认证工具
 
 **功能**：OpenAI OAuth 认证工具，提供 OAuth 自动化认证和 Token 获取功能。
 
@@ -193,9 +233,9 @@ AI-Account-Toolkit/
 
 ### Claude 相关 (packages/claude)
 
-#### 16. claude-key-switch - Claude 密钥切换工具
+#### 23. claude-key-switch - Claude 密钥切换工具
 
-**功能**：Claude API 密钥管理和切换工具，支持多密钥轮换和负载均衡。
+**功能**：Claude API 密钥管理 and 切换工具，支持多密钥轮换和负载均衡。
 
 **使用指南**：[packages/claude/claude-key-switch/README.md](packages/claude/claude-key-switch/README.md)
 
@@ -203,7 +243,7 @@ AI-Account-Toolkit/
 
 ### Gemini 相关 (packages/gemini)
 
-#### 17. gemini-balance-do - Gemini 余额查询工具
+#### 24. gemini-balance-do - Gemini 余额查询工具
 
 **功能**：Gemini API 余额查询和管理工具。
 
@@ -213,19 +253,19 @@ AI-Account-Toolkit/
 
 ### Codex 相关 (packages/codex)
 
-#### 18. codex-lb - Codex 负载均衡工具
+#### 25. codex-lb - Codex 负载均衡工具
 
 **功能**：Codex API 负载均衡工具，支持多实例分发和健康检查。
 
 **使用指南**：[packages/codex/codex-lb/README.md](packages/codex/codex-lb/README.md)
 
-#### 19. codex-register - Codex 注册脚本
+#### 26. codex-register - Codex 注册脚本
 
 **功能**：基于 Python 的 HTTP 自动化脚本，通过接口执行账号注册/登录相关步骤，并通过 MailAPI 轮询邮箱验证码，注册完成后自动上传到 CPA。
 
 **使用指南**：[packages/codex/codex-register/README.md](packages/codex/codex-register/README.md)
 
-#### 20. codex-register-fix - Codex 注册修复版本
+#### 27. codex-register-fix - Codex 注册修复版本
 
 **功能**：基于 codex-manager 二次开发，修复了原项目因 OpenAI 授权流程变更导致的注册失败问题。
 
@@ -235,7 +275,7 @@ AI-Account-Toolkit/
 
 ### Cursor 相关 (packages/cursor)
 
-#### 21. cursor-auto-register - Cursor 自动注册工具
+#### 28. cursor-auto-register - Cursor 自动注册工具
 
 **功能**：Cursor 编辑器账号自动注册和管理工具。
 
@@ -245,7 +285,7 @@ AI-Account-Toolkit/
 
 ### Grok 相关 (packages/grok)
 
-#### 22. grok-register - x.ai 注册批处理工具
+#### 29. grok-register - x.ai 注册批处理工具
 
 **功能**：面向 x.ai 注册批处理的一体化项目，提供控制台、注册执行器、WARP 网络出口、grok2api token 落池和运行时环境。
 
@@ -253,7 +293,7 @@ AI-Account-Toolkit/
 
 **使用指南**：[packages/grok/grok-register/README.md](packages/grok/grok-register/README.md)
 
-#### 23. grok2api - Grok API 转换服务
+#### 30. grok2api - Grok API 转换服务
 
 **功能**：将 Grok 服务的接口转换为标准 API 格式，支持多账号管理和 Token 池化。
 
@@ -263,13 +303,13 @@ AI-Account-Toolkit/
 
 ### 邮箱服务 (packages/email)
 
-#### 24. cloudflare-temp-email - Cloudflare 临时邮箱服务
+#### 31. cloudflare-temp-email - Cloudflare 临时邮箱服务
 
 **功能**：基于 Cloudflare 免费服务构建的临时邮箱服务，支持邮件收发、附件处理等功能。
 
 **使用指南**：[packages/email/cloudflare-temp-email/README.md](packages/email/cloudflare-temp-email/README.md)
 
-#### 25. tempmail - 自托管临时邮箱服务
+#### 32. tempmail - 自托管临时邮箱服务
 
 **功能**：自托管临时邮件服务平台，支持多域名池、用户自助提交域名、MX 自动验证与自动禁用、API Key 鉴权及 Web 管理后台。基于 Docker 部署，包含 PostgreSQL、PgBouncer、Redis、Postfix 等完整组件。
 
@@ -277,19 +317,19 @@ AI-Account-Toolkit/
 
 **使用指南**：[packages/email/tempmail/README.md](packages/email/tempmail/README.md)
 
-#### 26. ms-oauth2-api - 微软 OAuth2 邮件取件 API
+#### 33. ms-oauth2-api - 微软 OAuth2 邮件取件 API
 
 **功能**：将微软 OAuth2 认证取件流程封装成一个简单的 API，部署在 Vercel 无服务器平台上。
 
 **使用指南**：[packages/email/ms-oauth2-api/README.md](packages/email/ms-oauth2-api/README.md)
 
-#### 27. hotmail-outlook-auto-register - Hotmail/Outlook 自动注册
+#### 34. hotmail-outlook-auto-register - Hotmail/Outlook 自动注册
 
 **功能**：高级 Hotmail / Outlook 账号创建和自动化工具，支持验证码绕过、代理轮换、指纹伪装和逼真的人类行为模拟。
 
 **使用指南**：[packages/email/hotmail-outlook-auto-register/README.md](packages/email/hotmail-outlook-auto-register/README.md)
 
-#### 28. outlook-auto-register - Outlook 邮箱注册工具集
+#### 35. outlook-auto-register - Outlook 邮箱注册工具集
 
 **功能**：基于 Outlook 邮箱 OAuth2 认证的批量自动注册工具集，支持多个目标平台共享同一套邮箱接码模块。
 
@@ -299,37 +339,37 @@ AI-Account-Toolkit/
 
 ### 通用工具 (packages/general)
 
-#### 29. any-auto-register - 多平台账号自动注册工具
+#### 36. any-auto-register - 多平台账号自动注册工具
 
-**功能**：多平台账号自动注册工具，支持 ChatGPT、Cursor、Kiro 等多个平台。
+**功能**：多平台账号自动注册工具，支持 ChatGPT、Cursor、Kiro 等多个平台.
 
 **主要文件**：`main.py` · `api/` · `core/` · `platforms/`
 
 **使用指南**：[packages/general/any-auto-register/README.md](packages/general/any-auto-register/README.md)
 
-#### 30. api-key-scraper - 多平台 API 密钥抓取工具
+#### 37. api-key-scraper - 多平台 API 密钥抓取工具
 
-**功能**：多平台 API 密钥抓取工具，支持从多个来源自动化获取 OpenAI、Gemini、Claude 的 API 密钥。
+**功能**：多平台 API 密钥抓取工具，支持从多个来源自动化获取 OpenAI、Gemini、Claude 的 API 密钥.
 
 **使用指南**：[packages/general/api-key-scraper/README.md](packages/general/api-key-scraper/README.md)
 
-#### 31. mregister - ChatGPT 注册机 Web UI
+#### 38. mregister - ChatGPT 注册机 Web UI
 
-**功能**：基于 FastAPI 的控制台，用来统一管理 chatgpt_register_v2 和 grok-register 两个注册脚本。它把原本偏命令行的执行方式包装成可持久化、可排队、可下载结果、可通过 API 调用的任务系统。
+**功能**：基于 FastAPI 的控制台，用来统一管理 chatgpt_register_v2 和 grok-register 两个注册脚本. 它把原本偏命令行的执行方式包装成可持久化、可排队、可下载结果、可通过 API 调用的任务系统.
 
 **主要文件**：`web_console/` · `chatgpt_register_v2/` · `docker-compose.yml`
 
 **使用指南**：[packages/general/mregister/README.md](packages/general/mregister/README.md)
 
-#### 32. exa-free - Exa 免费使用工具
+#### 39. exa-free - Exa 免费使用工具
 
-**功能**：Exa 免费使用工具，提供 Exa 相关服务的免费访问。
+**功能**：Exa 免费使用工具，提供 Exa 相关服务的免费访问.
 
 **使用指南**：[packages/general/exa-free/README.md](packages/general/exa-free/README.md)
 
-#### 33. real-random-taxfree-address - 真实随机免税地址生成
+#### 40. real-random-taxfree-address - 真实随机免税地址生成
 
-**功能**：生成真实的美国随机免税地址，用于账号注册等场景。
+**功能**：生成真实的美国随机免税地址，用于账号注册等场景.
 
 **使用指南**：[packages/general/real-random-taxfree-address/README.md](packages/general/real-random-taxfree-address/README.md)
 
@@ -445,4 +485,4 @@ python packages/general/any-auto-register/main.py
 
 ---
 
-**License**: [MIT](LICENSE) | **更新日期**：2026-04-01 | **版本**：2.2.0
+**License**: [MIT](LICENSE) | **更新日期**：2026-04-10 | **版本**：2.3.0
